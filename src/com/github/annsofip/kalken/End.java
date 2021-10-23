@@ -1,29 +1,19 @@
 package com.github.annsofip.kalken;
 
-/*****************************************************
- TNM040
- Authors: Annsofi Pettersson & Gabriella Ivarsson
- University of Linköping - Campus Norrköping
- *****************************************************/
-
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Objects;
 import javax.swing.*;
 
 public class End extends JFrame implements ActionListener {
 
-    private final ClassLoader cl;
-    private final ImageIcon imgEnd;
-    private final JLabel lblEnd;
-    private final JButton btnRestart;
-
     public End() {
-        cl = ClassLoader.getSystemClassLoader();
+        ClassLoader cl = ClassLoader.getSystemClassLoader();
 
         //----------------------------------------CENTER--------------------------------//
-        imgEnd = new ImageIcon(cl.getResource("resources/end.png"));
-        lblEnd = new JLabel(imgEnd);
-        btnRestart = new JButton(new ImageIcon(cl.getResource("resources/restart.png")));
+        ImageIcon imgEnd = new ImageIcon(Objects.requireNonNull(cl.getResource("resources/end.png")));
+        JLabel lblEnd = new JLabel(imgEnd);
+        JButton btnRestart = new JButton(new ImageIcon(Objects.requireNonNull(cl.getResource("resources/restart.png"))));
         btnRestart.setBounds(300, 180, 80, 40);
         lblEnd.setBounds(0, 0, 450, 263);
 

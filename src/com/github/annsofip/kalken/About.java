@@ -1,31 +1,19 @@
 package com.github.annsofip.kalken;
-
-/*****************************************************
- TNM040
- Authors: Annsofi Pettersson & Gabriella Ivarsson
- University of Linköping - Campus Norrköping
- *****************************************************/
-
-
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Objects;
 import javax.swing.*;
 
 public class About extends JFrame implements ActionListener {
 
-    private final ClassLoader cl;
-    private final ImageIcon imgAbout;
-    private final JLabel lblAbout;
-    private final JButton btnOk;
-
     public About() {
-        cl = ClassLoader.getSystemClassLoader();
+        ClassLoader cl = ClassLoader.getSystemClassLoader();
 
 
         //----------------------------------------CENTER--------------------------------//
-        imgAbout = new ImageIcon(cl.getResource("om.png"));
+        ImageIcon imgAbout = new ImageIcon(Objects.requireNonNull(cl.getResource("om.png")));
 
-        lblAbout = new JLabel(imgAbout);
+        JLabel lblAbout = new JLabel(imgAbout);
 
         lblAbout.setBounds(0, 0, 450, 263);
 
@@ -33,7 +21,7 @@ public class About extends JFrame implements ActionListener {
         pnlCenter.setLayout(null);
         pnlCenter.add(lblAbout);
 
-        btnOk = new JButton(new ImageIcon(cl.getResource("ok.png")));
+        JButton btnOk = new JButton(new ImageIcon(Objects.requireNonNull(cl.getResource("ok.png"))));
         btnOk.setBounds(390, 215, 40, 30);
         pnlCenter.add(btnOk);
         btnOk.addActionListener(this);

@@ -1,12 +1,8 @@
 package com.github.annsofip.kalken;
-/*****************************************************
- TNM040
- Authors: Annsofi Pettersson & Gabriella Ivarsson
- University of Linköping - Campus Norrköping
- *****************************************************/
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Objects;
 import javax.swing.*;
 
 public class Kalken extends JFrame implements ActionListener {
@@ -30,21 +26,13 @@ public class Kalken extends JFrame implements ActionListener {
     private final JLabel lblSum;
     private final JLabel lblBig;
     private final JLabel lblProgress;
-    private final JLabel lblTrack;
-    private final JLabel lblBoard;
-    private final JLabel lblPoints;
-    private final JLabel lblKalken;
     private final JTextArea txtSum;
-    private static int sum = 0, number = 0, random = 0, points = 0;
+    private static int sum = 0, random = 0, points = 0;
     private boolean first = true;
     private static Object button;
     private static int level = 1, integer1 = 0, integer2 = 0;
-    private final ClassLoader cl;
     private static final int THRESHOLD = 50;
     private static final int ROOF = 20;
-    private final JMenuBar mnuBar;
-    private final JMenu mnuIcon;
-    private final JMenu mnuFile;
     private final JRadioButton chkHorse;
     private final JRadioButton chkBike;
     private final JRadioButton chkHuman;
@@ -55,11 +43,11 @@ public class Kalken extends JFrame implements ActionListener {
     private final JMenuItem itmRestart;
 
     public Kalken() {
-        cl = ClassLoader.getSystemClassLoader();
+        ClassLoader cl = ClassLoader.getSystemClassLoader();
         //----------------------------MENU-----------------------------------//
-        mnuBar = new JMenuBar();
-        mnuIcon = new JMenu("Byt karaktär");
-        mnuFile = new JMenu("Arkiv");
+        JMenuBar mnuBar = new JMenuBar();
+        JMenu mnuIcon = new JMenu("Byt karaktär");
+        JMenu mnuFile = new JMenu("Arkiv");
         itmExit = new JMenuItem("Avsluta");
         itmRestart = new JMenuItem("Starta om");
 
@@ -119,18 +107,18 @@ public class Kalken extends JFrame implements ActionListener {
 
         //---------------------------------------WEST-----------------------------------//
         //--------Buttons-------//
-        lblKalken = new JLabel(new ImageIcon(cl.getResource("kalken.png")));
-        btnOne = new JButton(new ImageIcon(cl.getResource("1.png")));
-        btnTwo = new JButton(new ImageIcon(cl.getResource("2.png")));
-        btnThree = new JButton(new ImageIcon(cl.getResource("3.png")));
-        btnFour = new JButton(new ImageIcon(cl.getResource("4.png")));
-        btnFive = new JButton(new ImageIcon(cl.getResource("5.png")));
-        btnSix = new JButton(new ImageIcon(cl.getResource("6.png")));
-        btnSeven = new JButton(new ImageIcon(cl.getResource("7.png")));
-        btnEight = new JButton(new ImageIcon(cl.getResource("8.png")));
-        btnNine = new JButton(new ImageIcon(cl.getResource("9.png")));
-        btnReset = new JButton(new ImageIcon(cl.getResource("angra.png")));
-        btnLevel = new JButton(new ImageIcon(cl.getResource("level.png")));
+        JLabel lblKalken = new JLabel(new ImageIcon(Objects.requireNonNull(cl.getResource("kalken.png"))));
+        btnOne = new JButton(new ImageIcon(Objects.requireNonNull(cl.getResource("1.png"))));
+        btnTwo = new JButton(new ImageIcon(Objects.requireNonNull(cl.getResource("2.png"))));
+        btnThree = new JButton(new ImageIcon(Objects.requireNonNull(cl.getResource("3.png"))));
+        btnFour = new JButton(new ImageIcon(Objects.requireNonNull(cl.getResource("4.png"))));
+        btnFive = new JButton(new ImageIcon(Objects.requireNonNull(cl.getResource("5.png"))));
+        btnSix = new JButton(new ImageIcon(Objects.requireNonNull(cl.getResource("6.png"))));
+        btnSeven = new JButton(new ImageIcon(Objects.requireNonNull(cl.getResource("7.png"))));
+        btnEight = new JButton(new ImageIcon(Objects.requireNonNull(cl.getResource("8.png"))));
+        btnNine = new JButton(new ImageIcon(Objects.requireNonNull(cl.getResource("9.png"))));
+        btnReset = new JButton(new ImageIcon(Objects.requireNonNull(cl.getResource("angra.png"))));
+        btnLevel = new JButton(new ImageIcon(Objects.requireNonNull(cl.getResource("level.png"))));
 
         //--------Layout-------//
         lblKalken.setBounds(5, 8, 92, 33);
@@ -169,11 +157,11 @@ public class Kalken extends JFrame implements ActionListener {
         //---------------------------------------EAST------------------------------------//
         //-------Labels-------//
         lblLevel = new JLabel("Level 1");
-        lblPoints = new JLabel("Poäng");
+        JLabel lblPoints = new JLabel("Poäng");
         lblNrpoints = new JLabel("0");
-        lblBoard = new JLabel(new ImageIcon(cl.getResource("board.png")));
-        btnHelp = new JButton(new ImageIcon(cl.getResource("helpbutton.png")));
-        btnAbout = new JButton(new ImageIcon(cl.getResource("about.png")));
+        JLabel lblBoard = new JLabel(new ImageIcon(Objects.requireNonNull(cl.getResource("board.png"))));
+        btnHelp = new JButton(new ImageIcon(Objects.requireNonNull(cl.getResource("helpbutton.png"))));
+        btnAbout = new JButton(new ImageIcon(Objects.requireNonNull(cl.getResource("about.png"))));
 
         //--------Layout--------//
         lblLevel.setBounds(15, 40, 60, 60);
@@ -203,10 +191,10 @@ public class Kalken extends JFrame implements ActionListener {
 
         lblBig = new JLabel();
         random();
-        lblTrack = new JLabel(new ImageIcon(cl.getResource("travbana.png")));
-        imgHuman = new ImageIcon(cl.getResource("human.png"));
-        imgBike = new ImageIcon(cl.getResource("bike.png"));
-        imgHorse = new ImageIcon(cl.getResource("horse.png"));
+        JLabel lblTrack = new JLabel(new ImageIcon(Objects.requireNonNull(cl.getResource("travbana.png"))));
+        imgHuman = new ImageIcon(Objects.requireNonNull(cl.getResource("human.png")));
+        imgBike = new ImageIcon(Objects.requireNonNull(cl.getResource("bike.png")));
+        imgHorse = new ImageIcon(Objects.requireNonNull(cl.getResource("horse.png")));
 
         lblProgress = new JLabel(imgHuman);
 
@@ -355,160 +343,124 @@ public class Kalken extends JFrame implements ActionListener {
 
     //----------------------------------LEVEL 1-------------------------------------//
     public void level1() {
-        if (first == true) {
+        if (first) {
             lblBig.setText("");
         }
         //---------1--------//
         if (button == btnOne) {
-            if (first == true) {
+            if (first) {
                 txtSum.setText("1");
                 sum += 1;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else if (txtSum.getLineCount() <= 9) {
                 txtSum.append(" + 1");
                 sum += 1;
                 lblSum.setText(" = " + sum);
-                number += 4;
-            } else {
-                sum = sum;
             }
         }
         //---------2--------//
         if (button == btnTwo) {
-            if (first == true) {
+            if (first) {
                 txtSum.setText("2");
                 sum += 2;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else if (txtSum.getLineCount() <= 9) {
                 txtSum.append(" + 2");
                 sum += 2;
                 lblSum.setText(" = " + sum);
-                number += 4;
-            } else {
-                sum = sum;
             }
         }
         //---------3--------//
         if (button == btnThree) {
-            if (first == true) {
+            if (first) {
                 txtSum.setText("3");
                 sum += 3;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else if (txtSum.getLineCount() <= 9) {
                 txtSum.append(" + 3");
                 sum += 3;
                 lblSum.setText(" = " + sum);
-                number += 4;
-            } else {
-                sum = sum;
             }
         }
         //---------4--------//
         if (button == btnFour) {
-            if (first == true) {
+            if (first) {
                 txtSum.setText("4");
                 sum += 4;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else if (txtSum.getLineCount() <= 9) {
                 txtSum.append(" + 4");
                 sum += 4;
                 lblSum.setText(" = " + sum);
-                number += 4;
-            } else {
-                sum = sum;
             }
         }
         //---------5--------//
         if (button == btnFive) {
-            if (first == true) {
+            if (first) {
                 txtSum.setText("5");
                 sum += 5;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else if (txtSum.getLineCount() <= 9) {
                 txtSum.append(" + 5");
                 sum += 5;
                 lblSum.setText(" = " + sum);
-                number += 4;
-            } else {
-                sum = sum;
             }
         }
         //---------6--------//
         if (button == btnSix) {
-            if (first == true) {
+            if (first) {
                 txtSum.setText("6");
                 sum += 6;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else if (txtSum.getLineCount() <= 9) {
                 txtSum.append(" + 6");
                 sum += 6;
                 lblSum.setText(" = " + sum);
-                number += 4;
-            } else {
-                sum = sum;
             }
         }
         //---------7--------//
         if (button == btnSeven) {
-            if (first == true) {
+            if (first) {
                 txtSum.setText("7");
                 sum += 7;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else if (txtSum.getLineCount() <= 9) {
                 txtSum.append(" + 7");
                 sum += 7;
                 lblSum.setText(" = " + sum);
-                number += 4;
-            } else {
-                sum = sum;
             }
         }
         //---------8--------//
         if (button == btnEight) {
-            if (first == true) {
+            if (first) {
                 txtSum.setText("8");
                 sum += 8;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else if (txtSum.getLineCount() <= 9) {
                 txtSum.append(" + 8");
                 sum += 8;
                 lblSum.setText(" = " + sum);
-                number += 4;
-            } else {
-                sum = sum;
             }
         }
         //---------9--------//
         if (button == btnNine) {
-            if (first == true) {
+            if (first) {
                 txtSum.setText("9");
                 sum += 9;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else if (txtSum.getLineCount() <= 9) {
                 txtSum.append(" + 9");
                 sum += 9;
                 lblSum.setText(" = " + sum);
-                number += 4;
-            } else {
-                sum = sum;
             }
         }
         //---------Reset--------//
@@ -519,7 +471,7 @@ public class Kalken extends JFrame implements ActionListener {
 
         }
         //---------Correct answer--------//
-        if (sum == random && first != true) {
+        if (sum == random && !first) {
             lblBig.setText("Bra gjort!");
             empty();
             random();
@@ -530,7 +482,7 @@ public class Kalken extends JFrame implements ActionListener {
             move();
         }
         //---------Too big numbers--------//
-        if (sum > random && first != true) {
+        if (sum > random && !first) {
             lblBig.setText("Nu blev summan för stor, försök igen.");
             empty();
             points -= 1;
@@ -553,142 +505,124 @@ public class Kalken extends JFrame implements ActionListener {
 
     //----------------------------------LEVEL 2-------------------------------------//
     public void level2() {
-        if (first == true) {
+        if (first) {
             lblBig.setText("");
         }
         //---------1--------//
         if (button == btnOne) {
-            if (first == true) {
+            if (first) {
                 txtSum.setText(ROOF + " - 1");
                 sum = ROOF - 1;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" - 1");
                 sum -= 1;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------2--------//
         if (button == btnTwo) {
-            if (first == true) {
+            if (first) {
                 txtSum.setText(ROOF + " - 2");
                 sum = ROOF - 2;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" - 2");
                 sum -= 2;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------3--------//
         if (button == btnThree) {
-            if (first == true) {
+            if (first) {
                 txtSum.setText(ROOF + " - 3");
                 sum = ROOF - 3;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" - 3");
                 sum -= 3;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------4--------//
         if (button == btnFour) {
-            if (first == true) {
+            if (first) {
                 txtSum.append(ROOF + " - 4");
                 sum = ROOF - 4;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" - 4");
                 sum -= 4;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------5--------//
         if (button == btnFive) {
-            if (first == true) {
+            if (first) {
                 txtSum.append(ROOF + " - 5");
                 sum = ROOF - 5;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" - 5");
                 sum -= 5;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------6--------//
         if (button == btnSix) {
-            if (first == true) {
+            if (first) {
                 txtSum.append(ROOF + " - 6");
                 sum = ROOF - 6;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" - 6");
                 sum -= 6;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------7--------//
         if (button == btnSeven) {
-            if (first == true) {
+            if (first) {
                 txtSum.append(ROOF + " - 7");
                 sum = ROOF - 7;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" - 7");
                 sum -= 7;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------8--------//
         if (button == btnEight) {
-            if (first == true) {
+            if (first) {
                 txtSum.append(ROOF + " - 8");
                 sum = ROOF - 8;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" - 8");
                 sum -= 8;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------9--------//
         if (button == btnNine) {
-            if (first == true) {
+            if (first) {
                 txtSum.append(ROOF + " - 9");
                 sum = ROOF - 9;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" - 9");
                 sum -= 9;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------Reset--------//
@@ -697,7 +631,7 @@ public class Kalken extends JFrame implements ActionListener {
             lblSum.setText(" = " + ROOF);
         }
         //---------Correct answer--------//
-        if (sum == random && first != true) {
+        if (sum == random && !first) {
             lblBig.setText("Bra gjort!");
             empty();
             random();
@@ -708,7 +642,7 @@ public class Kalken extends JFrame implements ActionListener {
             move();
         }
         //---------Too big numbers--------//
-        if (sum < random && first != true) {
+        if (sum < random && !first) {
             lblSum.setText(" = " + ROOF);
             lblBig.setText("Nu blev differansen för liten, försök igen.");
             empty();
@@ -732,142 +666,123 @@ public class Kalken extends JFrame implements ActionListener {
 
     //----------------------------------LEVEL 3-------------------------------------//
     public void level3() {
-        if (first == true) {
+        if (first) {
             lblBig.setText("");
         }
         //---------1--------//
         if (button == btnOne) {
-            if (first == true) {
+            if (first) {
                 txtSum.setText("1");
                 sum = 1;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" * 1");
-                sum *= 1;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------2--------//
         if (button == btnTwo) {
-            if (first == true) {
+            if (first) {
                 txtSum.setText("2");
                 sum = 2;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" * 2");
                 sum *= 2;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------3--------//
         if (button == btnThree) {
-            if (first == true) {
+            if (first) {
                 txtSum.setText("3");
                 sum = 3;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" * 3");
                 sum *= 3;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------4--------//
         if (button == btnFour) {
-            if (first == true) {
+            if (first) {
                 txtSum.append("4");
                 sum = 4;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" * 4");
                 sum *= 4;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------5--------//
         if (button == btnFive) {
-            if (first == true) {
+            if (first) {
                 txtSum.append("5");
                 sum = 5;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" * 5");
                 sum *= 5;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------6--------//
         if (button == btnSix) {
-            if (first == true) {
+            if (first) {
                 txtSum.append("6");
                 sum = 6;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" * 6");
                 sum *= 6;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------7--------//
         if (button == btnSeven) {
-            if (first == true) {
+            if (first) {
                 txtSum.append("7");
                 sum = 7;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" * 7");
                 sum *= 7;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------8--------//
         if (button == btnEight) {
-            if (first == true) {
+            if (first) {
                 txtSum.append("8");
                 sum = 8;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" * 8");
                 sum *= 8;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------9--------//
         if (button == btnNine) {
-            if (first == true) {
+            if (first) {
                 txtSum.append("9");
                 sum = 9;
                 lblSum.setText(" = " + sum);
                 first = false;
-                number += 1;
             } else {
                 txtSum.append(" * 9");
                 sum *= 9;
                 lblSum.setText(" = " + sum);
-                number += 4;
             }
         }
         //---------Reset--------//
@@ -876,7 +791,7 @@ public class Kalken extends JFrame implements ActionListener {
             lblSum.setText(" = 0");
         }
         //---------Correct answer--------//
-        if (sum == random && first != true) {
+        if (sum == random && !first) {
             lblBig.setText("Bra gjort!");
             empty();
             random();
@@ -887,7 +802,7 @@ public class Kalken extends JFrame implements ActionListener {
             move();
         }
         //---------Too big numbers--------//
-        if (sum > random && first != true) {
+        if (sum > random && !first) {
             lblSum.setText(" = 0");
             lblBig.setText("Nu blev produkten för stor, försök igen.");
             empty();
@@ -912,7 +827,7 @@ public class Kalken extends JFrame implements ActionListener {
 
     //-----------------------------LEVEL 4--------------------------------------//
     public void level4() {
-        if (first == true) {
+        if (first) {
             lblBig.setText("");
         }
         //---------1--------//
@@ -978,7 +893,7 @@ public class Kalken extends JFrame implements ActionListener {
         if (points > THRESHOLD) {
             buttonEnabler();
             restart();
-            End endframe = new End();
+            new End();
         }
     }
 
@@ -1019,9 +934,9 @@ public class Kalken extends JFrame implements ActionListener {
         } else if (button == itmExit) {
             System.exit(0);
         } else if (button == btnHelp) {
-            Help helpframe = new Help();
+            new Help();
         } else if (button == btnAbout) {
-            About aboutframe = new About();
+            new About();
         } else {
             levelChooser();
         }
@@ -1029,7 +944,7 @@ public class Kalken extends JFrame implements ActionListener {
 
 
     public static void main(String[] args) {
-        Kalken frame = new Kalken();
+        new Kalken();
     }
 
 }
